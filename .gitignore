@@ -1,0 +1,8 @@
+# Ignore CSV and model files
+*.csv
+*.pkl
+
+# Ignore other temporary or unnecessary files
+*.log
+__pycache__/
+*.pyc

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mutual Fund Scheme Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 40%;
+            margin: 50px auto;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        .form-box {
+            border: 2px solid #4CAF50; /* Green border around the form */
+            border-radius: 10px;
+            padding: 20px;
+            width: 100%; /* Full width of the container */
+            box-sizing: border-box;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+            color: #333;
+        }
+
+        input[type="number"], select {
+            width: 60%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 60%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .form-group {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <h1>Predict Mutual Fund Schemes</h1>
+    <form action="/predict" method="POST">
+        <label>Min SIP:</label>
+        <input type="number" step="any" name="min_sip" required><br>
+        <label>Min Lumpsum:</label>
+        <input type="number" step="any" name="min_lumpsum" required><br>
+        <label>Expense Ratio:</label>
+        <input type="number" step="any" name="expense_ratio" required><br>
+        <label>Alpha:</label>
+        <input type="number" step="any" name="alpha" required><br>
+        <label>Beta:</label>
+        <input type="number" step="any" name="beta" required><br>
+        <label>Sharpe Ratio:</label>
+        <input type="number" step="any" name="sharpe" required><br>
+        <label>Risk Level:</label>
+        <input type="number" step="any" name="risk_level" required><br>
+        <label>Returns 1 Year (%):</label>
+        <input type="number" step="any" name="returns_1yr" required><br>
+        <label>Returns 3 Year (%):</label>
+        <input type="number" step="any" name="returns_3yr" required><br>
+        <label>Returns 5 Year (%):</label>
+        <input type="number" step="any" name="returns_5yr" required><br>
+        <label>Category:</label>
+        <select name="category" required>
+            <option value="Equity">Equity</option>
+            <option value="Hybrid">Hybrid</option>
+            <option value="Other">Other</option>
+            <option value="Solution Oriented">Solution Oriented</option>
+        </select><br>
+        <input type="submit" value="Predict">
+    </form>
+</body>
+</html>
