@@ -64,7 +64,11 @@ def predict_scheme(user_input, top_n=8):
 # Route for the homepage
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('index2.html')
+
+@app.route('/documentation')
+def documentation():
+    return render_template('doc.html')
 
 # Route for making predictions
 @app.route('/predict', methods=['POST'])
