@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+</head>
+<body>
+    <h1>Top Predicted Mutual Fund Schemes</h1>
+    
+    {% if predictions %}
+        <ul>
+            {% for scheme, prob in predictions %}
+                <li>{{ scheme }} (Probability: {{ prob }})</li>
+            {% endfor %}
+        </ul>
+
+        <!-- Make sure the View Graph button is inside the conditional block for predictions -->
+        <form action="/view_graph" method="get">
+            <button type="submit">View Graph</button>
+        </form>
+
+    {% else %}
+        <p>No predictions available. Please submit the form again.</p>
+    {% endif %}
+    
+    <a href="/">Make another prediction</a>
+</body>
+</html>

@@ -10,6 +10,14 @@ import joblib
 
 # Load your data
 data = pd.read_csv('mf.csv')
+
+#new
+relevant_data = data[['scheme_name', 'returns_1yr', 'returns_3yr', 'returns_5yr']]
+# relevant_data.set_index('scheme_name', inplace=True)
+
+# Save the relevant data to a joblib file
+joblib.dump(relevant_data, 'scheme_returns.pkl')
+
 data.drop('fund_manager', axis=1, inplace=True)
 
 # Define label and features
@@ -61,5 +69,7 @@ rf_model.fit(X_train, y_train)
 joblib.dump(rf_model, 'random_forest_model.pkl')
 joblib.dump(scaler, 'scaler.pkl')
 joblib.dump(label_encoder, 'label_encoder.pkl')
+
+
 
 print("Model trained and saved successfully.")

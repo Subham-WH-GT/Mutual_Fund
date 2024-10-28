@@ -1,8 +1,11 @@
 
 
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template,send_from_directory, url_for
+from flask import send_file
 import joblib
 import pandas as pd
+import matplotlib.pyplot as plt
+import os
 
 app = Flask(__name__)
 
@@ -10,6 +13,8 @@ app = Flask(__name__)
 rf_model = joblib.load('random_forest_model.pkl')
 scaler = joblib.load('scaler.pkl')
 label_encoder = joblib.load('label_encoder.pkl')
+data=joblib.load('scheme_returns.pkl')
+# print("hi",data.columns)
 
 # Preprocess input function (same as defined in your predict_using_model.py)
 def preprocess_input(user_input, scaler, feature_names, category_columns):
@@ -57,9 +62,35 @@ def predict_scheme(user_input, top_n=8):
     # Get the top N predicted schemes
     top_n_indices = class_probabilities.argsort()[0][-top_n:][::-1]
     top_n_schemes = label_encoder.inverse_transform(top_n_indices)
+
+    # print(data.columns)
+
+
+    return_values = []
+    for scheme in top_n_schemes:
+        scheme_data = data[data['scheme_name'] == scheme].iloc[0]  # Getting the first matching scheme
+        return_values.append([scheme_data['returns_1yr'], scheme_data['returns_3yr'], scheme_data['returns_5yr']])
+    
+    # Create a DataFrame for the predicted schemes and returns
+    return_df = pd.DataFrame(return_values, columns=['1 Year Return', '3 Year Return', '5 Year Return'], index=top_n_schemes)
+    
+    # Plot the returns
+    plot_path = 'static/returns_plot.png'
+    return_df.plot(kind='bar', figsize=(10, 6))
+    plt.title('Top N Scheme Returns for 1 Year, 3 Year, and 5 Year')
+    plt.xlabel('Scheme Names')
+    plt.ylabel('Returns (%)')
+    plt.xticks(rotation=45, ha='right')
+    plt.legend(title='Returns Period')
+    plt.tight_layout()
+    plt.savefig(plot_path)
+    plt.close() 
+    # plt.show()    
     
     # Return the predicted schemes
     return top_n_schemes
+
+
 
 # Route for the homepage
 @app.route('/')
@@ -69,6 +100,11 @@ def home():
 @app.route('/documentation')
 def documentation():
     return render_template('doc.html')
+
+@app.route('/diag')
+def diag():
+    return send_file('static/Fund Diagrams.pdf', as_attachment=False)
+
 
 # Route for making predictions
 @app.route('/predict', methods=['POST'])
@@ -93,7 +129,12 @@ def predict():
         predictions = predict_scheme(user_input)
         
         # Return the results
-        return render_template('result.html', predictions=predictions)
+        return render_template('result.html', predictions=predictions,plot_url=url_for('view_plot'))
+
+
+@app.route('/view_plot')
+def view_plot():
+    return send_file('static/returns_plot.png')      
 
 if __name__ == '__main__':
     app.run(debug=True)
