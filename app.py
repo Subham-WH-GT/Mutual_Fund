@@ -305,7 +305,7 @@ def calculate_brokerage():
     # gst = 0.18 * brokerage  # 18% GST on brokerage
     # total_charges = brokerage + gst
 
-    return jsonify({'brokerage': round(charges, 2),'turnover':round(turnover, 2),'rate':round(rate, 2),'stt':round(stt, 2),'tranx':round(tranx, 2),'gst':round(gst, 2),'sebi':round(sebi, 2),'stamp':round(stamp, 2),'total':round(charges, 2),'credit':round(credit, 2)})
+    return jsonify({'brokerage': round(charges, 2),'turnover':round(turnover, 2),'rate':round(rate, 2),'stt':round(stt, 2),'tranx':tranx,'gst':gst,'sebi':sebi,'stamp':stamp, 'total':round(charges, 2),'credit':round(credit, 2)})
 
 if __name__ == '__main__':
     app.run(debug=True)
