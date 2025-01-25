@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brokerage Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 5px;
+            background-color: black;
+    color: saddlebrown;
+        }
+
+        .form-container {
+            max-width: 400px;
+            /* margin: 0 auto; */
+            display: flex;
+            flex-direction: column;
+            /* align-items: center; */
+            /* justify-content: center; */
+            margin: 60px;
+            margin-left:25%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            /* text-align: center; */
+        }
+        .form-container h2{
+            color:yellowgreen;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group button {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: green;
+        }
+        .each{
+            line-height: 2rem;
+        }
+        #calculateBtn{
+            cursor: pointer;
+            font-weight: 900;
+            background-color: #8e2ac0b8;
+        }
+
+    
+    </style>
+</head>
+
+<body>
+    
+        <div class="form-container">
+            <h2>Brokerage Calculator for {{ broker }}</h2>
+            <form id="brokerageForm">
+                <div class="form-group">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" required>
+                </div>
+                <div class="form-group">
+                    <label for="price">Price:</label>
+                    <input type="number" id="price" name="price" required>
+                </div>
+                <div class="form-group">
+                    <button type="button" id="calculateBtn">Calculate Brokerage</button>
+                </div>
+            </form>
+            <div class="result each" id="resultText"></div>
+            <div class="turnover each" id="turn"></div>
+            <div class="broker-rate each" id="brate"></div>
+            <div class="stt each" id="st"></div>
+            <div class="exchange-charge each" id="ec"></div>
+            <div class="gst each" id="GST"></div>
+            <div class="sebi each" id="seb"></div>
+            <div class="stamp each" id="sta"></div>
+            <div class="total-brok each" id="total"></div>
+            <div class="credit each" id="cred"></div>
+        </div>
+
+        <!-- <div class="res">
+            <div class="turnover" id="turn"></div>
+            <div class="broker-rate" id="brate"></div>
+            <div class="stt" id="st"></div>
+            <div class="exchange-charge" id="ec"></div>
+            <div class="gst" id="GST"></div>
+            <div class="sebi" id="seb"></div>
+            <div class="stamp" id="sta"></div>
+            <div class="total-brok" id="total"></div>
+            <div class="credit" id="cred"></div>
+        </div> -->
+    
+    <script>
+        document.getElementById('calculateBtn').addEventListener('click', async () => {
+            const quantity = document.getElementById('quantity').value;
+            const price = document.getElementById('price').value;
+            const broker = "{{ broker | lower }}";
+
+            // Validate input
+            if (!quantity || !price) {
+                alert("Please enter valid values for quantity and price.");
+                return;
+            }
+
+            // Send input to the backend
+            const response = await fetch('/calculate-brokerage', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ quantity, price, broker }),
+            });
+
+            const result = await response.json();
+
+            // Display result
+            if (result.error) {
+                document.getElementById('resultText').textContent = `Error: ${result.error}`;
+            } else {
+                document.getElementById('resultText').textContent = `Brokerage: ₹${result.brokerage}`;
+                document.getElementById('turn').innerHTML = `<strong>Turnover:</strong> ₹${result.turnover}`;
+                document.getElementById('brate').innerHTML = `<strong>Broker-rate:</strong> ₹${result.rate}`;
+                document.getElementById('st').innerHTML = `<strong>STT:</strong> ₹${result.stt}`;
+                document.getElementById('ec').innerHTML = `<strong>Exchange-Charge:</strong> ₹${result.tranx}`;
+                document.getElementById('GST').innerHTML= `<strong>Gst:</strong> ₹${result.gst}`;
+                document.getElementById('seb').innerHTML = `<strong>Sebi Charge:</strong> ₹${result.sebi}`;
+                document.getElementById('sta').innerHTML = `<strong>Stamp:</strong> ₹${result.stamp}`;
+                document.getElementById('total').innerHTML = `<strong>Total-Brokerage:</strong> ₹${result.total}`;
+                document.getElementById('cred').innerHTML = `<strong>Credit:</strong> ₹${result.credit}`;
+
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #9acd3296;
+            padding: 30px;
+        }
+
+        .text {
+            font-size: large;
+            font-weight: 400;
+        }
+
+        .tabular {
+            position: fixed;
+            cursor: pointer;
+            top: 20px;
+            right: 20px;
+            border-radius: 50px;
+
+        }
+
+        .tabular img {
+            height: 40px;
+            width: 100px;
+            border-radius: 50px;
+        }
+
+        .broker-container {
+            display: flex;
+            justify-content:space-between;
+            background-color:#0000008c;
+            border-radius: 20px            ;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 35px;
+        }
+
+        .broker {
+            padding: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 150px;
+            height: 130px;
+            text-align: center;
+            background-color: #f9f9f9;
+            transition: background-color 0.3s;
+        }
+
+        .broker:hover {
+            background-color: #e0e0e0;
+        }
+
+        /* .broker-select-section {
+            display: flex;
+            justify-content: space-between;
+            background-color: black;
+        } */
+
+
+        .con-left{
+            align-items: flex-start;
+        }
+
+        .con-right{
+            align-items: flex-end;
+        }
+
+        .kite{
+            background-image: url('static/images/kite.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .kite:hover{
+            border-color: orangered;
+            border-width: 3px;
+        }
+        .groww{
+            background-image: url('static/images/groww.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        .groww:hover{
+            background-color: rgba(0, 255, 255, 0.482);
+            border-color: rgb(21, 21, 171);
+            border-width:4px ;
+        }
+        .angelone{
+            background-image: url('static/images/angel one.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .angelone:hover{
+            border-color: green;
+            border-width: 3px;
+        }
+        .upstox{
+            background-image: url('static/images/upstox.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .upstox:hover{
+            border-width: 3px;
+            border-color: purple;
+        }
+
+        .icici{
+            background-image: url('static/images/icici.jpg');
+            /* background-size: cover; */
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .icici:hover{
+            border-color:orange;
+            border-width: 3px;
+        }
+
+        .Kotak{
+            background-image: url('static/images/kotak.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .Kotak:hover{
+            border-color: darkred;
+            border-width: 3px;
+        }
+        .Hdfc{
+            background-image: url('static/images/hdfc.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .Hdfc:hover{
+            border-color: red;
+            border-width: 3px;
+        }
+        .Motilal{
+            background-image: url('static/images/motilal.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .Motilal:hover{
+            border-width: 4px;
+            border-color: yellow;
+        }
+
+
+
+        .form-container {
+            max-width: 400px;
+            /* margin: 0 auto; */
+            display: flex;
+            flex-direction: column;
+            /* align-items: center; */
+            /* justify-content: center; */
+            background-color: black;
+            color:saddlebrown;
+            margin: 60px;
+            margin-left:25%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            /* text-align: center; */
+        }
+        .form-container h2{
+            color:yellowgreen;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group button {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: green;
+        }
+        .each{
+            line-height: 2rem;
+        }
+        #calculateBtn{
+            cursor: pointer;
+            font-weight: 900;
+            background-color: #8e2ac0b8;
+        }
+
+       
+
+    </style>
+</head>
+
+<body>
+    <button class="tabular" onclick="viewTabular()"> <img src="static/images/table.png" alt=""> </button>
+    <div class="equity-charges text">
+        <h2>Brokerage Charge</h2>
+        <p>Stockbroker charges in India vary based on the broker, the type of trade, and the brokerage plan.
+            Broker types
+            Full-service brokers
+            Traditional brokers that provide research, investment advice, and help with trading. They charge between
+            0.01% and 0.50% of the total trade volume.
+            Discount brokers
+            Charge a lower fee than full-service brokers, but don't offer financial advice. They may charge a flat fee
+            for each trade or offer free delivery of stocks.
+            This is a stack plot representing the Equity brokerage for different brokers.
+            Click your desired broker logo to Calculate your brokerage charge.</p>
+        <img src="static/images/stackplot.png" alt="">
+    </div>
+
+
+    <!-- <div class="broker-select-section"> -->
+        <h1>Select Your Broker</h1>
+        <div class="broker-container">
+            <div class="con-left">
+                <div class="broker kite" onclick="selectBroker('zerodha')"></div>
+                <div class="broker groww" onclick="selectBroker('groww')"></div>
+                <div class="broker angelone" onclick="selectBroker('angelone')"></div>
+                <div class="broker upstox" onclick="selectBroker('upstox')"></div>
+            </div>
+
+
+            <div class="form-container">
+                <h2>Brokerage Calculator for {{ broker }}</h2>
+                <form id="brokerageForm">
+                    <div class="form-group">
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" id="quantity" name="quantity" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price:</label>
+                        <input type="number" id="price" name="price" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" id="calculateBtn">Calculate Brokerage</button>
+                    </div>
+                </form>
+                <div class="result each" id="resultText"></div>
+                <div class="turnover each" id="turn"></div>
+                <div class="broker-rate each" id="brate"></div>
+                <div class="stt each" id="st"></div>
+                <div class="exchange-charge each" id="ec"></div>
+                <div class="gst each" id="GST"></div>
+                <div class="sebi each" id="seb"></div>
+                <div class="stamp each" id="sta"></div>
+                <div class="total-brok each" id="total"></div>
+                <div class="credit each" id="cred"></div>
+            </div>
+    
+
+
+
+            <div class="con-right">
+                <div class="broker icici" onclick="selectBroker('icici')"></div>
+                <div class="broker Kotak" onclick="selectBroker('kotak')"></div>
+                <div class="broker Hdfc" onclick="selectBroker('hdfc')"></div>
+                <div class="broker Motilal" onclick="selectBroker('motilal')"></div>
+            </div>
+        </div>
+    <!-- </div> -->
+
+    <div class="bar text">
+        <h2>Ratings on Google</h2>
+        <p>Different Broker have got different ratings on the Google play. Respresenting a
+            better UI for the users and ease.
+        </p>
+        <img src="static/images/bar.jpg" width="1400px" alt="">
+    </div>
+
+    <div class="downloads text">
+        <h2>Downloads</h2>
+        <p>This is the pie plot showing the number of downloads in M in google play.</p>
+        <img src="static/images/pie.png" width="1400px" alt="">
+    </div>
+
+    <div class="additional text">
+        <h2>Additional-Features</h2>
+        <p>additional features have been the most exciting features that different brokers serve to users and for which
+            the desired choice for users increases.
+            Some broker provides a lot of additional features including bonds,insurance while some are
+            restricted to MFs and Stocks. See the Tabular View for an extended Vision
+        </p>
+        <img src="static/images/bubble.jpg" width="1400px" alt="">
+    </div>
+
+    <script>
+
+
+// function selectBroker(broker) {
+//             // Redirect to the calculator page with the selected broker
+//             window.location.href = `/calculator/${broker}`;
+//         }
+
+function selectBroker(broker) {
+    // Dynamically set the selected broker's name in the calculator header
+    document.querySelector('.form-container h2').textContent = `Brokerage Calculator for ${broker.charAt(0).toUpperCase() + broker.slice(1)}`;
+
+    // Display the calculator form and reset the result fields
+    document.getElementById('brokerageForm').reset();
+    document.querySelectorAll('.each').forEach(el => el.innerHTML = '');
+    // Store the selected broker in a hidden field or a global variable
+    document.getElementById('calculateBtn').setAttribute('data-broker', broker);
+}
+
+        function viewTabular() {
+            // Fetch the CSV file
+            fetch('/static/Broker Compare.csv') // Adjust the path to your CSV file
+                .then(response => response.text())
+                .then(csvData => {
+                    // Parse CSV data into rows and columns
+                    const rows = csvData.split('\n').map(row => row.split(','));
+
+                    // Create a new window and inject table HTML
+                    const newWindow = window.open('', '_blank');
+                    newWindow.document.write('<!DOCTYPE html><html><head><title>Tabular View</title></head><body>');
+                    newWindow.document.write('<h1>Broker Data in Tabular Form</h1>');
+                    newWindow.document.write('<table border="1" style="width:100%; border-collapse:collapse;">');
+
+                    rows.forEach((row, rowIndex) => {
+                        newWindow.document.write('<tr>');
+                        row.forEach(cell => {
+                            newWindow.document.write(rowIndex === 0
+                                ? `<th style="padding:8px; text-align:left;">${cell}</th>`
+                                : `<td style="padding:8px;">${cell}</td>`);
+                        });
+                        newWindow.document.write('</tr>');
+                    });
+
+                    newWindow.document.write('</table></body></html>');
+                    newWindow.document.close();
+                })
+                .catch(error => {
+                    console.error('Error fetching or parsing the CSV file:', error);
+                });
+        }
+
+
+
+
+
+
+        document.getElementById('calculateBtn').addEventListener('click', async () => {
+            const quantity = document.getElementById('quantity').value;
+            const price = document.getElementById('price').value;
+            // const broker = "{{ broker | lower }}";
+            const broker = document.getElementById('calculateBtn').getAttribute('data-broker');
+
+            // Validate input
+            if (!quantity || !price) {
+                alert("Please enter valid values for quantity and price.");
+                return;
+            }
+
+            // Send input to the backend
+            const response = await fetch('/calculate-brokerage', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ quantity, price, broker }),
+            });
+
+            const result = await response.json();
+
+            // Display result
+            if (result.error) {
+                document.getElementById('resultText').textContent = `Error: ${result.error}`;
+            } else {
+                document.getElementById('resultText').textContent = `Brokerage: ₹${result.brokerage}`;
+                document.getElementById('turn').innerHTML = `<strong>Turnover:</strong> ₹${result.turnover}`;
+                document.getElementById('brate').innerHTML = `<strong>Broker-rate:</strong> ₹${result.rate}`;
+                document.getElementById('st').innerHTML = `<strong>STT:</strong> ₹${result.stt}`;
+                document.getElementById('ec').innerHTML = `<strong>Exchange-Charge:</strong> ₹${result.tranx}`;
+                document.getElementById('GST').innerHTML= `<strong>Gst:</strong> ₹${result.gst}`;
+                document.getElementById('seb').innerHTML = `<strong>Sebi Charge:</strong> ₹${result.sebi}`;
+                document.getElementById('sta').innerHTML = `<strong>Stamp:</strong> ₹${result.stamp}`;
+                document.getElementById('total').innerHTML = `<strong>Total-Brokerage:</strong> ₹${result.total}`;
+                document.getElementById('cred').innerHTML = `<strong>Credit:</strong> ₹${result.credit}`;
+
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Broker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .broker-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .broker {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 150px;
+            text-align: center;
+            background-color: #f9f9f9;
+            transition: background-color 0.3s;
+        }
+        .broker:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="broker-select-section">
+    <h1>Select Your Broker</h1>
+    <div class="broker-container">
+        <div class="broker" onclick="selectBroker('zerodha')">Zerodha</div>
+        <div class="broker" onclick="selectBroker('groww')">Groww</div>
+        <div class="broker" onclick="selectBroker('angelone')">AngelOne</div>
+        <div class="broker" onclick="selectBroker('upstox')">Upstox</div>
+    </div>
+</div>
+    <script>
+        function selectBroker(broker) {
+            // Redirect to the calculator page with the selected broker
+            window.location.href = `/calculator/${broker}`;
+        }
+    </script>
+</body>
+</html>
