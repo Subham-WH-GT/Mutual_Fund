@@ -8,7 +8,12 @@
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
+    <script>
+        function toggleCard(cardId) {
+            let card = document.getElementById(cardId);
+            card.classList.toggle("expanded");
+        }
+    </script>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -171,7 +176,7 @@
 
 
         .navbar {
-            background: linear-gradient(135deg, #1f1c2c, #928dab);
+            background: linear-gradient(26deg, #00968854, #9c27b0fa);
             overflow: hidden;
             padding: 15px 0;
             box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
@@ -223,6 +228,7 @@
             float: right;
             height: 60px;
             margin-right: 20px;
+            border-radius: 20px;
         }
 
         .disclaimer-container {
@@ -269,38 +275,43 @@
 
 
         .form-container {
-            flex: 1;
-            max-width: 500px;
+            /* flex: 1; */
+            width: 95%;
+            /* max-width: 500px; */
             background-color: #1c1c3c;
             border-radius: 10px;
             padding: 30px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: row;
+
         }
 
         h1 {
-            text-align: center;
+            /* text-align: center; */
             color: #f1c40f;
             margin-bottom: 0px;
-            font-size: 28px;
+            font-size: 45px;
             letter-spacing: 1px;
+            max-width: inherit;
         }
 
         form {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            /* align-items: center; */
         }
 
         label {
             font-weight: 600;
             margin-top: 10px;
             color: #f1f1f1;
-            font-size: 14px;
+            font-size: 20px;
         }
 
         input[type="number"],
         select {
-            width: 80%;
+            /* width: 80%; */
             padding: 12px;
             margin: 10px 0;
             border: 2px solid #f1c40f;
@@ -328,6 +339,7 @@
         }
 
         #scrollable-form {
+            width: 50%;
             max-height: 400px;
             /* Adjust height to show 4 fields */
             overflow-y: auto;
@@ -342,7 +354,7 @@
         #scrollable-form input {
             width: 100%;
             /* Full width inputs for better appearance */
-            margin-bottom: 10px;
+            /* margin-bottom: 10px; */
             /* Space between inputs */
         }
 
@@ -368,13 +380,21 @@
         }
 
         .message {
-            padding: 0px;
+            /* padding: 0px;
             display: flex;
             color: #f1c40f;
             margin-bottom: 20px;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
+            align-items: center; */
+
+            padding: 0px;
+            display: flex;
+            color: #f1c40f;
+
+            flex-direction: column;
+            justify-content: center;
+
         }
 
         .videos {
@@ -492,14 +512,17 @@
 
         .slideshow-container {
             display: flex;
-            justify-content: center;
+            margin-top: 70px;
+            /* justify-content: center; */
+            padding: 20px;
             align-items: center;
             align-content: center;
             position: relative;
-            width: 100%;
-            background-color: #9e9e9e5c;
-            border-radius: 30px;
-            margin: auto;
+            /* width: 96%; */
+            /* background-color: #9e9e9e5c; */
+            background: linear-gradient(135deg, #e0e1eb, #3687ce);
+            /* border-radius: 30px; */
+            /* margin: auto; */
             height: 5%;
             overflow: hidden;
 
@@ -517,6 +540,16 @@
             width: 900px;
         }
 
+        .bind {
+            
+            display: flex;
+            width: 30%;
+        }
+
+        .slide-message{
+            width: 40%;
+        }
+
 
 
         .slideshow-container img {
@@ -524,9 +557,23 @@
             justify-content: center;
             align-items: center; */
             /* padding-left: 70px; */
-            width: 900px;
+            width: 650px;
             height: 600px;
 
+        }
+
+        #mes1{
+            font-size: 65px;
+    color: #0a0909;
+    font-family: cursive;
+    font-style: italic;
+    margin: 0px;
+        }
+        #mes2{
+            color: #3F51B5;
+    font-family: math;
+    font-size: 20px;
+    font-weight: 600;
         }
 
         .prev,
@@ -585,6 +632,422 @@
                 opacity: 1
             }
         }
+
+
+        .calculator-container {
+            background-image: url("/static/images/ls.png");
+            display: flex;
+            flex-direction: column;
+            /* background: #fff; */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            /* width: 420px; */
+            text-align: center;
+            border-style: solid;
+        }
+
+        .sip-box {
+            /* background-image: url("/static/images/ls.png"); */
+            /* background-image: url(/static/images/ls.png); */
+            border-style: solid;
+            border-radius: 54px;
+            border-color: #ffffff1f;
+            padding: 26px;
+        }
+
+        #green {
+            color: #0fff19;
+        }
+
+        #red {
+            color: red;
+        }
+
+        .calculator-container h2 {
+            color: #a3ff38;
+            margin-bottom: 20px;
+            font-size: xxx-large;
+            font-family: cursive;
+            font-weight: 100;
+            background-color: #5f9ea06e;
+            width: max-content;
+            margin: auto;
+            padding: 10px;
+            border-radius: 22px;
+            border-style: solid;
+        }
+
+        .mess {
+            color: #FFC107;
+            font-family: cursive;
+            font-size: xx-large;
+            font-style: italic;
+        }
+
+        .mess:hover {
+            background-color: white;
+            color: black;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .calculator-container label {
+            display: block;
+            /* margin: 10px 0 5px; */
+            text-align: center;
+            color: #0e0f0e;
+            font-size: 17px;
+            font-family: cursive;
+            font-weight: 600;
+        }
+
+        .calculator-container input {
+            width: 35%;
+            padding: 12px;
+            color: rgb(250, 241, 241);
+            background: black;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px;
+            background: none;
+            color: #0b0b0b;
+            border: solid black;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 15px;
+            transition: 0.3s;
+            display: flow;
+            margin: auto;
+        }
+
+        button:hover {
+            background: #88bcf4;
+        }
+
+        .result {
+            display: none;
+            background-color: white;
+            width: fit-content;
+            margin: auto;
+            padding: 12px;
+            border-radius: 20px;
+            margin-top: 20px;
+            color: black;
+            border-color: black;
+            border-style: solid;
+            line-height: 1.7rem;
+        }
+
+        .faq-container {
+            /* max-width: 700px; */
+            /* margin: 37px; */
+            background: #fff;
+            background: linear-gradient(135deg, #b8b9c2, #b3c7d9);
+            padding: 20px;
+            /* border-radius: 10px; */
+            margin-top: 70px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-container h2 {
+            text-align: left;
+            color: #333;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+            padding: 15px;
+            font-size: 18px;
+            cursor: pointer;
+            outline: none;
+            /* display: flex; */
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Poppins';
+            color: black;
+        }
+
+        .faq-question:hover {
+            background-color: #f1f1f1;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+
+
+        .feature-container {
+            /* max-width: 1200px; */
+
+            background: linear-gradient(135deg, #e0e1eb, #3687ce);
+            padding: 10px;
+            padding: 20px;
+            margin-top: 60px;
+
+            /* margin: 40px; */
+            /* border-radius: 20px; */
+        }
+
+        .title {
+            font-size: 36px;
+            color: rgb(1, 1, 1);
+            margin-bottom: 20px;
+            font-family: monospace;
+        }
+
+        /* Card grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        /* Card styling */
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            cursor: pointer;
+            border-style: solid;
+            /* border-color: #0c0c0c;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);*/
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Card image */
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        /* Card content */
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-content h2 {
+            font-size: 18px;
+            margin: 0;
+            color: #333;
+        }
+
+        .card-content p {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .card-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+
+        .definition {
+            display: none;
+            /* Initially hidden */
+            color: #faf8f8;
+            /* font-size: 14px; */
+            /* margin-top: 5px; */
+            /* background-color: #f8f9fa; */
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-top: -10px;
+        }
+
+
+
+        .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal label{
+    color: black;
+    display: block;
+}
+
+#lumpresult{
+    /* display: contents */
+    display: none;
+    background-color: #ffffff;
+    width: fit-content;
+    padding: 10px;
+    border-radius: 14px;
+    /* margin: 15px; */
+    color: darkblue;
+    font-family: monospace;
+    font-size: large;
+    line-height: 1.5rem;
+}
+
+.modal-content {
+    /* background-color: white; */
+    background: linear-gradient(135deg, #e0e1eb, #3687ce);
+    color:black;
+    padding: 20px;
+    border-radius: 10px;
+    width: 403px;
+    /* width: 30%; */
+    /* text-align: center; */
+    /* position: relative; */
+}
+
+.modal-content p{
+    color: red;
+    margin: 0px;
+}
+
+.modal-content h2{
+    display: flex;
+    justify-content: center;
+    text-decoration: underline;
+    color: #880E4F;
+}
+
+.close {
+    /* position: absolute; */
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+/* Input & Button Styles */
+.modal input {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.modal button {
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.model button:hover {
+    background: #0056b3;
+}
+
+
+.newsmodal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+}
+
+/* Modal Content */
+.newsmodal .modal-content {
+    background: linear-gradient(135deg, #1A237E, #00897B);
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 50%;
+    max-height: 70%;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.newsmodal .modal-content h2{
+    display: flex
+;
+    justify-content: center;
+    text-decoration: underline;
+    color: #f0f3f0;
+    font-size: xx-large;
+    font-family: cursive;
+}
+
+/* Close Button */
+.close {
+    color: #f90808;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: black;
+}
+
+/* Scrollable Modal Body */
+.newsmodal .modal-body {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+/* News Item Styling */
+.news-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.news-item a {
+    text-decoration: none;
+    color:#FFC107;;
+    /* font-weight: bold; */
+    font-family: auto;
+}
+
+.news-item a:hover {
+    text-decoration: underline;
+}
+
+
+       
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
 </head>
@@ -594,7 +1057,7 @@
         <a href="#">Home</a>
         <a href="/documentation">Documentation</a>
         <a href="/diag">Model Architectural Schemas</a>
-        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo">
+        <img src="{{ url_for('static', filename='images/lo3.png') }}" alt="Logo" class="logo">
     </div>
 
     <div class="disclaimer-container">
@@ -643,12 +1106,12 @@
 
             <div class="message">
                 <h1>Predict Mutual Fund Schemes</h1>
-                <h4>Get your best Scheme from AI</h4>
+                <h4>Get your best Scheme from AI &#129302;</h4>
             </div>
 
             <form action="/predict" id="scrollable-form" method="POST">
 
-                <label>Min SIP:</label>
+                <!-- <label>Min SIP:</label>
                 <input class="data" type="number" step="any" name="min_sip" required><br>
                 <label>Min Lumpsum:</label>
                 <input class="data" type="number" step="any" name="min_lumpsum" required><br>
@@ -675,7 +1138,67 @@
                     <option value="Hybrid">Hybrid</option>
                     <option value="Other">Other</option>
                     <option value="Solution Oriented">Solution Oriented</option>
-                </select><br>
+                </select><br> -->
+
+
+
+                <label>Min SIP:</label>
+                <input class="data" type="number" step="any" name="min_sip" required onfocus="showDefinition('sip')">
+                <p class="definition" id="sip">SIP (Systematic Investment Plan) allows you to invest a fixed amount
+                    regularly.</p>
+
+                <label>Min Lumpsum:</label>
+                <input class="data" type="number" step="any" name="min_lumpsum" required
+                    onfocus="showDefinition('lumpsum')">
+                <p class="definition" id="lumpsum">Lumpsum investment is a one-time bulk investment in mutual funds.</p>
+
+                <label>Expense Ratio:</label>
+                <input class="data" type="number" step="any" name="expense_ratio" required
+                    onfocus="showDefinition('expense')">
+                <p class="definition" id="expense">Expense Ratio is the fee charged by fund houses for managing
+                    investments.</p>
+
+                <label>Alpha:</label>
+                <input class="data" type="number" step="any" name="alpha" required onfocus="showDefinition('alpha')">
+                <p class="definition" id="alpha">Alpha measures a fund’s performance compared to a benchmark index.</p>
+
+                <label>Beta:</label>
+                <input class="data" type="number" step="any" name="beta" required onfocus="showDefinition('beta')">
+                <p class="definition" id="beta">Beta indicates a fund's volatility compared to the market.</p>
+
+                <label>Sharpe Ratio:</label>
+                <input class="data" type="number" step="any" name="sharpe" required onfocus="showDefinition('sharpe')">
+                <p class="definition" id="sharpe">Sharpe Ratio measures risk-adjusted returns of an investment.</p>
+
+                <label>Risk Level:</label>
+                <input class="data" type="number" step="any" name="risk_level" required
+                    onfocus="showDefinition('risk')">
+                <p class="definition" id="risk">Risk Level defines how volatile the investment is.</p>
+
+                <label>Returns 1 Year (%):</label>
+                <input class="data" type="number" step="any" name="returns_1yr" required
+                    onfocus="showDefinition('returns1')">
+                <p class="definition" id="returns1">Returns in percentage generated by the fund in the last 1 year.</p>
+
+                <label>Returns 3 Year (%):</label>
+                <input class="data" type="number" step="any" name="returns_3yr" required
+                    onfocus="showDefinition('returns3')">
+                <p class="definition" id="returns3">Returns in percentage generated by the fund in the last 3 years.</p>
+
+                <label>Returns 5 Year (%):</label>
+                <input class="data" type="number" step="any" name="returns_5yr" required
+                    onfocus="showDefinition('returns5')">
+                <p class="definition" id="returns5">Returns in percentage generated by the fund in the last 5 years.</p>
+
+                <label>Category:</label>
+                <select name="category" required onfocus="showDefinition('category')">
+                    <option value="Equity">Equity</option>
+                    <option value="Hybrid">Hybrid</option>
+                    <option value="Other">Other</option>
+                    <option value="Solution Oriented">Solution Oriented</option>
+                </select>
+                <p class="definition" id="category">Category defines the type of mutual fund based on asset allocation.
+                </p>
 
                 <input type="submit" value="Predict">
             </form>
@@ -684,41 +1207,199 @@
 
     </div>
 
-    <div class="slide-head">
-        <p>Choose your desired Broker with a single click</p>
+    <div class="calculator-container">
+
+        <div class="sip-message">
+            <p class="mess">One who understands the value of compounding Will <span id="green">Earn</span>, who don't
+                will <span id="red">Pay</span> for it &#128293;</p>
+        </div>
+
+        <div class="sip-box">
+            <h2>SIP Calculator</h2>
+            <label for="investmentAmount">Monthly Investment Amount (₹):</label>
+            <input type="number" id="investmentAmount" placeholder="Ex: 1000">
+
+            <label for="returnRate">Expected Rate of Return (P.A) %:</label>
+            <input type="number" id="returnRate" placeholder="Ex: 12">
+
+            <label for="tenure">Tenure (Years):</label>
+            <input type="number" id="tenure" placeholder="Ex: 10">
+
+            <button onclick="calculateSIP()">Calculate Wealth</button>
+
+            <div class="result" id="result"></div>
+        </div>
+
     </div>
+
+
+    <!-- <div class="slide-head">
+        
+    </div> -->
     <div class="slideshow-container">
-        <a class="prev" onclick="changeSlides(-1)">&#10094;</a>
-        <div class="slide fade">
-            <a href="{{ url_for('page1') }}">
-                <img src="/static/images/real2.jpg" alt="Slide 1">
-            </a>
+        <div class="slide-message">
+            <p id="mes1">Select Broker</p>
+            <p id="mes2">Choose your desired Broker with a single click</p>
         </div>
-        <div class="slide fade">
-            <a href="{{ url_for('page1') }}">
-                <img src="/static/images/slide2.jpg" alt="Slide 2">
-            </a>
-        </div>
-        <div class="slide fade">
-            <a href="{{ url_for('page1') }}">
-                <img src="/static/images/slide3.jpg" alt="Slide 3">
-            </a>
-        </div>
-        <div class="slide fade">
-            <a href="{{ url_for('page1') }}">
-                <img src="/static/images/slide4.png" alt="Slide 4">
-            </a>
-        </div>
+        <div class="bind">
+            <!-- <a class="prev" onclick="changeSlides(-1)">&#10094;</a> -->
+            <div class="slide fade">
+                <a href="{{ url_for('page1') }}">
+                    <img src="/static/images/real2.jpg" alt="Slide 1">
+                </a>
+            </div>
+            <div class="slide fade">
+                <a href="{{ url_for('page1') }}">
+                    <img src="/static/images/slide2.jpg" alt="Slide 2">
+                </a>
+            </div>
+            <div class="slide fade">
+                <a href="{{ url_for('page1') }}">
+                    <img src="/static/images/slide3.jpg" alt="Slide 3">
+                </a>
+            </div>
+            <div class="slide fade">
+                <a href="{{ url_for('page1') }}">
+                    <img src="/static/images/slide4.png" alt="Slide 4">
+                </a>
+            </div>
 
 
 
 
-        <a class="next" onclick="changeSlides(1)">&#10095;</a>
+            <!-- <a class="next" onclick="changeSlides(1)">&#10095;</a> -->
+        </div>
     </div>
 
-    <footer>
-        &copy; 2024 Mutual Fund Predictor
-    </footer>
+
+
+
+
+
+
+    <div class="feature-container">
+        <h1 class="title">Fund & Market Insights- &#128181; </h1>
+        <div class="card-grid">
+            <div class="card" onclick="window.location.href = 'https://groww.in/ipo';">
+                <img src="{{ url_for('static', filename='images/ipo.jpg') }}" alt="IPO Section">
+                <div class="card-content">
+                    <h2>IPO Section</h2>
+                    <p>Get details on upcoming IPOs and listing gains.</p>
+                </div>
+            </div>
+
+            <div class="card" onclick="openModal()">
+                <img src="{{ url_for('static', filename='images/lump.png') }}" alt="Lumpsum Calculator">
+                <div class="card-content">
+                    <h2>Lumpsum Calculator</h2>
+                    <p>Calculate your future returns on lump sum investments.</p>
+                </div>
+            </div>
+
+
+            <div id="lumpsumModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <h2>Lumpsum Investment Calculator</h2>
+        
+                    <label for="amount">Investment Amount (₹):</label>
+                    <input type="number" id="amount" placeholder="Enter amount" required>
+        
+                    <label for="rate">Expected Rate of Return (% P.A.):</label>
+                    <input type="number" id="rate" placeholder="Enter rate" required>
+        
+                    <label for="years">Tenure (Years):</label>
+                    <input type="number" id="years" placeholder="Enter years" required>
+                    <p>*upto 50 years</p>
+        
+                    <button onclick="calculateLumpsum()">Calculate</button>
+        
+                    <h3 id="lumpresult"></h3>
+                </div>
+            </div>
+
+            <div class="card" onclick="window.location.href='https://www.5paisa.com/share-market-today/dividends';">
+                <img src="{{ url_for('static', filename='images/divi.jpg') }}" alt="Dividend Yield">
+                <div class="card-content">
+                    <h2>Dividend Yield</h2>
+                    <p>Check recently announced dividends for stocks.</p>
+                </div>
+            </div>
+
+            <div class="card" onclick="toggleCard(this)">
+                <img src="{{ url_for('static', filename='images/ii.jpg') }}" alt="Predict Listing Gains">
+                <div class="card-content">
+                    <h2>Predict Listing Gains</h2>
+                    <p>Use AI to predict IPO listing gains based on market trends.</p>
+                </div>
+            </div>
+
+            <div class="card" onclick="openModal2()">
+                <img src="{{ url_for('static', filename='images/tx.jpg') }}" alt="Tax Saving Calculator">
+                <div class="card-content">
+                    <h2>Monthly EMI Calculator</h2>
+                    <p>Calculate your monthly EMI amount with our EMI calculator.</p>
+                </div>
+            </div>
+
+            <div id="emiModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal2()">&times;</span>
+                    <h2>Monthly EMI Calculator</h2>
+        
+                    <label for="amount">Loan Amount (₹):</label>
+                    <input type="number" id="emiamount" placeholder="Enter amount" required>
+        
+                    <label for="rate">Rate of Interest (% P.A.):</label>
+                    <input type="number" id="emirate" placeholder="Enter rate" required>
+        
+                    <label for="years">Tenure (Years):</label>
+                    <input type="number" id="emiyears" placeholder="Enter years" required>
+                    <p>*upto 30 years</p>
+        
+                    <button onclick="calculatemi()">Calculate</button>
+        
+                    <h3 id="emiresult"></h3>
+                </div>
+            </div>
+
+            <div class="card" onclick="fetchNews()">
+                <img src="{{ url_for('static', filename='images/bull.jpg') }}" alt="Market News">
+                <div class="card-content">
+                    <h2>Market News</h2>
+                    <p>Stay updated with the latest stock market news.</p>
+                </div>
+            </div>
+
+            <div id="news-modal" class="newsmodal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <h2>Market News</h2>
+                    <div id="news-list" class="modal-body">Loading news...</div>
+                </div>
+            </div>
+
+            <div class="card" onclick="redirectToOptimizer()">
+                <img src="{{ url_for('static', filename='images/tx.jpg') }}" alt="Tax Saving Calculator">
+                <div class="card-content">
+                    <h2>PortFolio Optimizer</h2>
+                    <p>Calculate tax benefits from ELSS mutual funds.</p>
+                </div>
+            </div>
+
+
+            <div class="card" onclick="toggleCard(this)">
+                <img src="{{ url_for('static', filename='images/tx.jpg') }}" alt="Tax Saving Calculator">
+                <div class="card-content">
+                    <h2>Risk-Assesment Tool</h2>
+                    <p>Calculate tax benefits from ELSS mutual funds.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 
 
     <div class="chat-icon" onclick="toggleChatBox()">
@@ -741,9 +1422,78 @@
         </form>
     </div>
 
+    <div class="faq-container">
+        <h2>FAQs</h2>
+
+        <div class="faq-item">
+            <button class="faq-question"><strong>+</strong> How much can I invest in a SIP? </button>
+            <div class="faq-answer">
+                <p>There is no limit to the amount you can invest in a SIP. The minimum amount that you can invest is
+                    Rs. 500 per month.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question"><strong>+</strong> What is the maximum tenure of a SIP?</button>
+            <div class="faq-answer">
+                <p>There is no maximum tenure of a SIP. You can invest as long as you can. The minimum tenure you can go
+                    for is 3 years.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question"><strong>+</strong> Are SIPs similar to mutual funds?</button>
+            <div class="faq-answer">
+                <p>People often tend to think of SIP as either mutual funds or different than a mutual fund. The fact is
+                    that SIP is just a style of investment and not a fund/scheme or a stock/investment avenue. It is an
+                    investment vehicle to invest periodically in a fund/scheme of your choice.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question"><strong>+</strong> Do SIP allows only equity mutual funds investments?</button>
+            <div class="faq-answer">
+                <p>No, you can invest in debt and hybrid mutual funds through SIP.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question"><strong>+</strong> Can I renew a SIP?</button>
+            <div class="faq-answer">
+                <p>Yes, you can renew a SIP automatically. Companies also give you the option to cancel this auto-renew
+                    feature.
+
+                </p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question"><strong>+</strong> Can I pause my investments in a SIP? </button>
+            <div class="faq-answer">
+                <p>Yes, mutual fund companies also provide the option of pausing your SIP investments up for a specified
+                    period.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question"><strong>+</strong> Can I modify my SIP amount? </button>
+            <div class="faq-answer">
+                <p>Yes, you can anytime check your returns with SIP investment calculator and increase or decrease the
+                    SIP amount</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Mutual Fund Predictor
+    </footer>
     <script>
 
+        function showDefinition(id) {
+            // Hide all definitions
+            let definitions = document.querySelectorAll('.definition');
+            definitions.forEach(def => def.style.display = 'none');
 
+            // Show the selected definition
+            document.getElementById(id).style.display = 'block';
+        }
 
 
 
@@ -810,6 +1560,183 @@
         function exitChat() {
             document.getElementById("chatBox").classList.remove("active");
         }
+
+
+        function calculateSIP() {
+            let p = document.getElementById("investmentAmount").value;
+            let r = document.getElementById("returnRate").value / 100 / 12;
+            let n = document.getElementById("tenure").value * 12;
+
+            if (p === "" || r === "" || n === "") {
+                document.getElementById("result").innerHTML = "Please fill all fields.";
+                return;
+            }
+
+            p = parseFloat(p);
+            r = parseFloat(r);
+            n = parseInt(n);
+
+            let maturityAmount = p * ((Math.pow(1 + r, n) - 1) / r) * (1 + r);
+            let depo = p * (n);
+            let earn = maturityAmount - depo;
+            document.getElementById("result").style.display = 'block'
+            document.getElementById("result").style.backgroundColor = 'White'
+            document.getElementById("result").innerHTML = `
+    Amount Received at Maturity: ₹${maturityAmount.toFixed(2)} <br>
+    Total Amount Deposited: ₹${depo.toFixed(2)}<br>
+    Profit Booked: ₹${earn.toFixed(2)}
+`;
+            // document.getElementById("result").innerHTML = `Total Amount Deposited: ₹${depo.toFixed(2)}`;
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const questions = document.querySelectorAll(".faq-question");
+
+            questions.forEach((question) => {
+                question.addEventListener("click", function () {
+                    // Toggle the display of the next sibling (answer div)
+                    const answer = this.nextElementSibling;
+                    answer.style.display = (answer.style.display === "block") ? "none" : "block";
+                });
+            });
+        });
+
+        function toggleCard(card) {
+            card.classList.toggle("expanded");
+        }
+
+
+        function openModal() {
+    document.getElementById("lumpsumModal").style.display = "flex";
+}
+
+function openModal2() {
+    document.getElementById("emiModal").style.display = "flex";
+}
+
+// Close Modal
+function closeModal() {
+    document.getElementById("lumpsumModal").style.display = "none";
+    document.getElementById("news-modal").style.display="none";
+}
+
+function closeModal2() {
+    document.getElementById("emiModal").style.display = "none";
+}
+
+// Calculate Lumpsum Investment
+function calculateLumpsum() {
+    let amount = document.getElementById("amount").value;
+    let rate = document.getElementById("rate").value;
+    let years = document.getElementById("years").value;
+
+    if (amount === "" || rate === "" || years === "") {
+        alert("Please fill all fields");
+        return;
+    }
+
+    if (years > 50) {
+        years = 50;
+        document.getElementById("years").value = 50; // Update the input field
+        alert("Tenure limited to 50 years. Calculation will be based on 50 years.");
+    }
+
+    
+
+    fetch("/calculate", {
+        method: "POST",
+        body: JSON.stringify({ amount: amount, rate: rate, years: years }),
+        headers: { "Content-Type": "application/json" }
+    })
+    .then(response => response.json())
+    // .then(data => {
+    //     document.getElementById("lumpresult").innerText = "Corpus Value: ₹" + data.future_value;
+    // });
+  
+    .then(data => {
+    const futureValue = data.future_value;
+    const depositedAmount = data.deposited_amount; // Assuming you have this in your response
+    const totalEarnings = data.total_earnings;
+    
+    document.getElementById("lumpresult").style.display="flex"
+    document.getElementById("lumpresult").innerHTML = `
+        Corpus Value: ₹${futureValue}<br>
+        Total Deposited Amount: ₹${depositedAmount}<br>
+        Total Earnings: ₹${totalEarnings}
+    `;
+});
+}
+
+
+
+function calculatemi() {
+    let amount = document.getElementById("emiamount").value;
+    let rate = document.getElementById("emirate").value;
+    let years = document.getElementById("emiyears").value;
+
+    if (amount === "" || rate === "" || years === "") {
+        alert("Please fill all fields");
+        return;
+    }
+
+    if (years > 30) {
+        years = 30;
+        document.getElementById("emiyears").value = 50; // Update the input field
+        alert("Tenure limited to 30 years. Calculation will be based on 30 years.");
+    }
+
+    
+
+    fetch("/calculate_emi", {
+        method: "POST",
+        body: JSON.stringify({ emiamount: amount, emirate: rate, emiyears: years }),
+        headers: { "Content-Type": "application/json" }
+    })
+    .then(response => response.json())
+    // .then(data => {
+    //     document.getElementById("lumpresult").innerText = "Corpus Value: ₹" + data.future_value;
+    // });
+  
+    .then(data => {
+    const emiValue = data.emi_value;
+    const loanAmount = data.loan_amount; // Assuming you have this in your response
+    
+    
+    document.getElementById("emiresult").style.display="flex"
+    document.getElementById("emiresult").innerHTML = `
+        Monthly EMI Amount: ₹${emiValue}<br>
+        Total Loan Amount: ₹${loanAmount}<br>
+        `;
+});
+}
+
+async function fetchNews() {
+            const response = await fetch("/api/news");
+            const newsList = await response.json();
+            
+            const newsContainer = document.getElementById("news-list");
+            newsContainer.innerHTML = ""; // Clear previous content
+
+            newsList.forEach(news => {
+                const newsItem = document.createElement("div");
+                newsItem.classList.add("news-item");
+                newsItem.innerHTML = `
+                    <h3><a href="${news.link}" target="_blank">${news.title}</a></h3>
+                    <p>${news.timestamp}</p>
+                    <hr>
+                `;
+                newsContainer.appendChild(newsItem);
+            });
+
+            document.getElementById("news-modal").style.display = "block"; // Show modal
+        }
+
+
+        function redirectToOptimizer() {
+        window.location.href = "{{ url_for('optimise') }}"; 
+    }
+
+
     </script>
 
 

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Optimization</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3 {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+}
+
+input {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.hidden {
+    display: none;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    background: #e9ecef;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Portfolio Optimization</h1>
+
+        <form id="portfolioForm">
+            <label>Total Investment:</label>
+            <input type="number" id="investment" required>
+
+            <h3>Current Allocation (INR)</h3>
+            <div id="allocationInputs"></div>
+
+            <h3>Choose Optimization Type:</h3>
+            <label><input type="radio" name="optimizationType" value="mpt" checked> Modern Portfolio Theory (MPT)</label>
+            <label><input type="radio" name="optimizationType" value="sentiment"> Sentiment-Based Optimization</label>
+
+            <button type="submit">Optimize Portfolio</button>
+        </form>
+
+        <div id="results" class="hidden">
+            <h2>Optimized Portfolio</h2>
+
+            <div id="currentPortfolio">
+                <h3>Current Portfolio</h3>
+                <p><strong>Expected Return:</strong> <span id="currentReturn"></span>%</p>
+                <p><strong>Risk:</strong> <span id="currentRisk"></span>%</p>
+                <p><strong>Sharpe Ratio:</strong> <span id="currentSharpe"></span></p>
+            </div>
+
+            <div id="optimizedPortfolio">
+                <h3>Optimized Portfolio</h3>
+                <p><strong>Expected Return:</strong> <span id="optimizedReturn"></span>%</p>
+                <p><strong>Risk:</strong> <span id="optimizedRisk"></span>%</p>
+                <p><strong>Sharpe Ratio:</strong> <span id="optimizedSharpe"></span></p>
+
+                <h3>Optimized Allocation</h3>
+                <ul id="optimizedAllocation"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+document.addEventListener("DOMContentLoaded", function () {
+    const sectors = ["Auto", "Bank", "Energy", "Pharma", "FMCG", "IT", "Reality", "PSU", "PSE", "Infra", "Metal", "Media"];
+    const allocationInputs = document.getElementById("allocationInputs");
+
+    // Create input fields for sector allocation
+    sectors.forEach(sector => {
+        const div = document.createElement("div");
+        div.innerHTML = `
+            <label>${sector}:</label>
+            <input type="number" id="${sector}" placeholder="Amount" required>
+        `;
+        allocationInputs.appendChild(div);
+    });
+
+    document.getElementById("portfolioForm").addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const totalInvestment = parseFloat(document.getElementById("investment").value);
+        const allocationData = {};
+
+        sectors.forEach(sector => {
+            const amount = parseFloat(document.getElementById(sector).value) || 0;
+            allocationData[sector] = amount;
+        });
+
+        // Get selected optimization type (MPT or Sentiment-Based)
+        const optimizationType = document.querySelector('input[name="optimizationType"]:checked').value;
+
+        const requestData = {
+            total_investment: totalInvestment,
+            current_allocation: allocationData,
+            optimization_type: optimizationType
+        };
+
+        try {
+            const response = await fetch("http://127.0.0.1:5000/optimise", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(requestData)
+            });
+
+            const data = await response.json();
+            if (data.error) {
+                alert("Error: " + data.error);
+                return;
+            }
+
+            // Update UI with results
+            document.getElementById("results").classList.remove("hidden");
+            document.getElementById("currentReturn").textContent = data["Current Portfolio"]["Expected Return"];
+            document.getElementById("currentRisk").textContent = data["Current Portfolio"]["Risk"];
+            document.getElementById("currentSharpe").textContent = data["Current Portfolio"]["Sharpe Ratio"];
+
+            document.getElementById("optimizedReturn").textContent = data["Optimized Portfolio"]["Expected Return"];
+            document.getElementById("optimizedRisk").textContent = data["Optimized Portfolio"]["Risk"];
+            document.getElementById("optimizedSharpe").textContent = data["Optimized Portfolio"]["Sharpe Ratio"];
+
+            const optimizedAllocationList = document.getElementById("optimizedAllocation");
+            optimizedAllocationList.innerHTML = "";
+            Object.entries(data["Optimized Portfolio"]["Allocation"]).forEach(([sector, amount]) => {
+                const li = document.createElement("li");
+                li.textContent = `${sector}: ₹${amount}`;
+                optimizedAllocationList.appendChild(li);
+            });
+
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    });
+});
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market News</title>
+    <script>
+        async function fetchNews() {
+            const response = await fetch("/api/news");
+            const newsList = await response.json();
+            
+            const newsContainer = document.getElementById("news-container");
+            newsContainer.innerHTML = ""; // Clear previous content
+
+            newsList.forEach(news => {
+                const newsItem = document.createElement("div");
+                newsItem.innerHTML = `
+                    <h3><a href="${news.link}" target="_blank">${news.title}</a></h3>
+                    <p>${news.timestamp}</p>
+                    <hr>
+                `;
+                newsContainer.appendChild(newsItem);
+            });
+        }
+
+        window.onload = fetchNews;
+    </script>
+</head>
+<body>
+    <h1>Market News</h1>
+    <div id="news-container">Loading news...</div>
+</body>
+</html>
