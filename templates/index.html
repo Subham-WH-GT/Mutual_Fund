@@ -70,6 +70,7 @@
             font-size: 18px;
             margin-bottom: 10px;
             text-align: center;
+            width: 90%;
         }
 
         #chatme {
@@ -1054,9 +1055,10 @@
 
 <body>
     <div class="navbar">
-        <a href="#">Home</a>
+        <a href="#" id="home-link">Home</a>
         <a href="/documentation">Documentation</a>
         <a href="/diag">Model Architectural Schemas</a>
+        <a href="/temp">Project Template</a>
         <img src="{{ url_for('static', filename='images/lo3.png') }}" alt="Logo" class="logo">
     </div>
 
@@ -1277,7 +1279,7 @@
 
 
 
-    <div class="feature-container">
+    <div class="feature-container" id="market-insights">
         <h1 class="title">Fund & Market Insights- &#128181; </h1>
         <div class="card-grid">
             <div class="card" onclick="window.location.href = 'https://groww.in/ipo';">
@@ -1380,21 +1382,21 @@
             </div>
 
             <div class="card" onclick="redirectToOptimizer()">
-                <img src="{{ url_for('static', filename='images/tx.jpg') }}" alt="Tax Saving Calculator">
+                <img src="{{ url_for('static', filename='images/rr.png') }}" alt="Tax Saving Calculator">
                 <div class="card-content">
                     <h2>PortFolio Optimizer</h2>
-                    <p>Calculate tax benefits from ELSS mutual funds.</p>
+                    <p>Optimize your portfolio for maximum returns and minimise risk through smart diversification.</p>
                 </div>
             </div>
 
 
-            <div class="card" onclick="toggleCard(this)">
+            <!-- <div class="card" onclick="toggleCard(this)">
                 <img src="{{ url_for('static', filename='images/tx.jpg') }}" alt="Tax Saving Calculator">
                 <div class="card-content">
                     <h2>Risk-Assesment Tool</h2>
                     <p>Calculate tax benefits from ELSS mutual funds.</p>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 
@@ -1485,6 +1487,12 @@
         &copy; 2024 Mutual Fund Predictor
     </footer>
     <script>
+
+
+document.getElementById("home-link").addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent default anchor behavior
+        document.getElementById("market-insights").scrollIntoView({ behavior: "smooth" });
+    });
 
         function showDefinition(id) {
             // Hide all definitions

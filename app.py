@@ -168,9 +168,9 @@ def predict():
 
 intent_keywords = {
     "technical_issue": ["technical", "issue", "problem", "error", "bug"],
-    "feedback": ["feedback", "suggestion", "opinion", "thoughts"],
-    "support": ["support", "help", "assist", "assistance"],
-    "platform_use": ["platform", "use", "functionality", "how to", "guide"],
+    "feedback": ["feedback", "suggestion", "opinion", "thoughts","4"],
+    "support": ["support", "help", "assist", "assistance","3"],
+    "platform_use": ["platform", "use", "functionality", "how to", "guide","1"],
     "welcome": ["welcome", "hello", "hi", "hey", "greetings"]
 }
 
