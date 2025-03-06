@@ -1,6 +1,6 @@
 # Ignore CSV and model files
-*.csv
-*.pkl
+# *.csv
+# *.pkl
 
 # Ignore other temporary or unnecessary files
 *.log
