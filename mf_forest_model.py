@@ -77,5 +77,6 @@ joblib.dump(label_encoder, 'label_encoder.pkl')
 
 # import joblib
 print(joblib.__version__)
+# print(scikit-learn.__version__)
 
 print("Model trained and saved successfully.")
