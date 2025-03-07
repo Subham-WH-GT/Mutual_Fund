@@ -67,11 +67,15 @@ rf_model.fit(X_train, y_train)
 
 # Save the model, scaler, and label encoder to disk
 # joblib.dump(rf_model, 'random_forest_model.pkl')
+
+
 joblib.dump(rf_model, "random_forest_model.pkl", compress=5)
 
 joblib.dump(scaler, 'scaler.pkl')
 joblib.dump(label_encoder, 'label_encoder.pkl')
 
 
+# import joblib
+print(joblib.__version__)
 
 print("Model trained and saved successfully.")

@@ -105,6 +105,9 @@
 import joblib
 import pandas as pd
 
+import joblib
+print(joblib.__version__)
+
 # Load the saved model, scaler, and label encoder
 rf_model = joblib.load('random_forest_model.pkl')
 scaler = joblib.load('scaler.pkl')

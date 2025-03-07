@@ -1,0 +1,7 @@
+runtime: python310  # Use the latest Python version
+entrypoint: gunicorn -b :$PORT app:app  # Replace "main:app" with your Flask entry point
+
+handlers:
+- url: /.*
+  script: auto
+  secure: always
