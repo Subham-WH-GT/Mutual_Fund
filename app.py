@@ -138,6 +138,10 @@ def documentation():
 def diag():
     return send_file('static/Fund Diagrams.pdf', as_attachment=False)
 
+@app.route('/temp')
+def temp():
+    return send_file('static/FundTemplate.pdf',as_attachment=False)
+
 
 # Route for making predictions
 @app.route('/predict', methods=['POST'])
